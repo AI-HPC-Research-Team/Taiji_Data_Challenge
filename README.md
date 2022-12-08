@@ -1,10 +1,9 @@
 # Taiji Data Challenge
 ---
-![Taiji|500](tj-small-white-logo.png)
+![Taiji|500](images/tj-small-white-logo.png)
 This is the official Taiji Data Challenge code repository for data generation.
 
 ## Getting Started
----
 1. Clone the repo
 	```
 	git clone https://github.com/AI-HPC-Research-Team/taiji_data_challenge.git
@@ -21,7 +20,6 @@ This is the official Taiji Data Challenge code repository for data generation.
 	bash setup.sh
 	```
 ## Reference
----
 - [FastEMRIWaveforms](https://github.com/BlackHolePerturbationToolkit/FastEMRIWaveforms)
 -  [lisa-on-gpu](https://github.com/mikekatz04/lisa-on-gpu)
 -  https://gitlab.in2p3.fr/LISA/lisa-verification-binaries
