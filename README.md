@@ -1,6 +1,7 @@
 # Taiji Data Challenge
 ---
 ![Taiji|500](images/tj-small-white-logo.png)
+
 This is the official Taiji Data Challenge code repository for data generation.
 
 ## Getting Started
