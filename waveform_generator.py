@@ -18,16 +18,16 @@ mylogger = MyLogger(__name__)
 
 class GB:
 
-    def __init__(self, use_gpu=False, new=False):
+    def __init__(self, use_gpu=False, VGB=True):
 
         if use_gpu:
             self.xp = xp
         else:
             self.xp = np
-        if not new:
-            self.key_idx = bidict({'f': 0, 'fdot': 1, 'beta': 2, 'lambda': 3, 'A': 4, 'iota': 5, 'psi': 6, 'phi0': 7})
-        else:
+        if VGB:
             self.key_idx = bidict({'f': 2, 'fdot': 3, 'beta': 4, 'lambda': 5, 'A': 1, 'iota': 6, 'psi': 7, 'phi0': 8})
+        else:
+            self.key_idx = bidict({'f': 0, 'fdot': 1, 'beta': 2, 'lambda': 3, 'A': 4, 'iota': 5, 'psi': 6, 'phi0': 7})
         self.idx_key = self.key_idx.inverse
         self.fore = None
 
@@ -71,8 +71,6 @@ class GB:
         ]
         self.para_cat = par[:, permute]
 
-    def par_partition(self, b_e=[0, -1]):
-        self.para_cat = self.para_cat[b_e[0]:b_e[1]]
 
 
 class AAK(object):

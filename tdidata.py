@@ -4,10 +4,15 @@ try:
 except (ImportError, ModuleNotFoundError):
     import numpy as xp
 
+from pathlib import Path
 from utils.log_utils import MyLogger, TimerLog
 from utils.constant import Constant
 from utils.cosmology import Cosmology
+import os
+import h5py
 import functools
+import json
+from tqdm import tqdm
 
 from fastlisaresponse import ResponseWrapper
 from waveform_generator import GB, MBHB, AAK, SOBBH
@@ -18,7 +23,7 @@ EPS = 1e-5
 mylogger = MyLogger(__name__)
 
 
-class WaveformGen(object):
+class TDIWaveformGen(object):
 
     def __init__(self, T=1, sample_rate=0.1, tdi_gen=2, det='Taiji', t0=10000, use_gpu=True):
         self.use_gpu = use_gpu
@@ -32,12 +37,12 @@ class WaveformGen(object):
             self.L_arm = 2.5e9
             self.sqSacc = 3e-15
             self.sqSoms = 15e-12
-            self.orbit_file = '/workspace/zhaoty/TDC/Orbits/h5/Test2.hdf5'
+            self.orbit_file = ''
         elif det == 'Taiji':
             self.L_arm = 3e9
             self.sqSacc = 3e-15
             self.sqSoms = 8e-12
-            self.orbit_file = '/workspace/zhaoty/TDC/Orbits/h5/orbit1.hdf5'
+            self.orbit_file = 'orbit/taiji-orbit.hdf5'
 
         self.sampling_rate = sample_rate
         self.t0 = t0
@@ -104,7 +109,7 @@ class WaveformGen(object):
             index_beta,
             remove_sky_coords=False,
             is_ecliptic_latitude=False,
-            orbit_file='/workspace/zhaoty/TDC/Orbits/test/Test2.hdf5',
+            orbit_file='.',
             tdi_gen="2nd generation",
             t0=10000,
             tdi_chan='XYZ'):
@@ -160,19 +165,19 @@ class WaveformGen(object):
 
     @staticmethod
     def PSD_Noise_X15(fr, sqSnoise, L_arm):
-        [Sa_nu, Soms_nu] = WaveformGen.PSD_Noise_components(fr, sqSnoise)
+        [Sa_nu, Soms_nu] = TDIWaveformGen.PSD_Noise_components(fr, sqSnoise)
         phiL = 2 * xp.pi * fr * L_arm / Constant.C_SI
         return 16 * (xp.sin(phiL))**2 * (Soms_nu + Sa_nu * (3 + xp.cos(2 * phiL)))
 
     @staticmethod
     def PSD_Noise_XY15(fr, sqSnoise, L_arm):
-        [Sa_nu, Soms_nu] = WaveformGen.PSD_Noise_components(fr, sqSnoise)
+        [Sa_nu, Soms_nu] = TDIWaveformGen.PSD_Noise_components(fr, sqSnoise)
         phiL = 2 * xp.pi * fr * L_arm / Constant.C_SI
         return -8 * (xp.sin(phiL))**2 * xp.cos(phiL) * (Soms_nu + 4 * Sa_nu)
 
     @staticmethod
     def PSD_Noise_X20(fr, sqSnoise, L_arm):
-        [Sa_nu, Soms_nu] = WaveformGen.PSD_Noise_components(fr, sqSnoise)
+        [Sa_nu, Soms_nu] = TDIWaveformGen.PSD_Noise_components(fr, sqSnoise)
         phiL = 2 * xp.pi * fr * L_arm / Constant.C_SI
         return 64 * (xp.sin(phiL))**2 * (xp.sin(2 * phiL))**2 * (Soms_nu + Sa_nu * (3 + xp.cos(2 * phiL)))
 
@@ -221,9 +226,9 @@ class WaveformGen(object):
             remove_sky_coords=False,
             t0=self.t0,
         )
-    def init_GB(self,):
+    def init_GB(self,VGB=True):
         mylogger.logger.info('Init GB')
-        self.gb = GB(self.use_gpu, new=True)
+        self.gb = GB(self.use_gpu, VGB=VGB)
         self.gb_TDI = self.TDI(
             self.gb,
             index_lambda=6,
@@ -259,5 +264,3 @@ class WaveformGen(object):
                                   t0=self.t0,
                                   tdi_chan='XYZ')
 
-if __name__ == '__main__':
-    
