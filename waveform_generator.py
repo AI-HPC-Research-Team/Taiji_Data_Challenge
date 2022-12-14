@@ -29,7 +29,6 @@ class GB:
         else:
             self.key_idx = bidict({'f': 0, 'fdot': 1, 'beta': 2, 'lambda': 3, 'A': 4, 'iota': 5, 'psi': 6, 'phi0': 7})
         self.idx_key = self.key_idx.inverse
-        self.fore = None
 
     def __call__(self, A, f, fdot, iota, phi0, psi, T=1.0, dt=10.0):
 
