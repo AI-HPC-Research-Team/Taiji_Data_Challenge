@@ -1,2 +1,4 @@
 .obsidian
 .DS_Store
+toy_dataset/*.hdf5
+toy_dataset/*.py
