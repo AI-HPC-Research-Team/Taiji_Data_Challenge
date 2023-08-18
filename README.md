@@ -23,11 +23,13 @@ For more detailed information about the challenge, guidelines, and announcements
 ## Datasets
 
 Frequency domain data of all the TDC datasets.
+
 ![Dataset Overview](images/fd-data.png)
 
 ## Results on Toy Dataset
 
 MCMC posterior corner plot for the toy dataset. The MCMC posterior analysis is conducted on our toy dataset, utilizing the following source parameter values: $(\mathcal{A}, f, \dot{f}, \lambda, \beta, \iota, \phi_0, \psi) = (2.008192 \times 10^{-23}, 0.00459585, 1.469823 \times 10^{-16}, 4.604082, -0.052144, 0.39811, 1.8777623071795864, 2.927109)$.
+
 ![MCMC](images/corner.png)
 
 
