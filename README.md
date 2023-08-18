@@ -1,13 +1,20 @@
 # Taiji Data Challenge for Exploring Gravitational Wave Universe
-![Taiji|300](images/tj-small-white-logo.png)
+<div align=center><img src="images/tj-small-white-logo.png" width="500"></div>
+<br/>
+
+<p align="center">
+<a href="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge&logo=appveyor)](https://opensource.org/licenses/MIT" alt="License">
+    <img src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge&logo=appveyor)](https://opensource.org/licenses/MIT" /></a>
+<a href="https://arxiv.org/abs/2301.02967" alt="arXiv">
+    <img src="https://img.shields.io/badge/arXiv-2301.02967-red?style=for-the-badge&logo=academia&logoColor=white" /></a>
+<a href="https://link.springer.com/article/10.1007/s11467-023-1318-y" alt="DOI">
+    <img src="https://img.shields.io/badge/DOI-10.1007%2Fs11467.023.1318.y-blue?style=for-the-badge&logo=Sequelize&logoColor=white" /></a>
+</p>
 
 <p align="justify">
 Welcome to the official repository of the Taiji Data Challenge! This repository hosts the data generation code. For more details about the challenge, please refer to the paper: <a href="https://link.springer.com/article/10.1007/s11467-023-1318-y">https://link.springer.com/article/10.1007/s11467-023-1318-y</a>.
 </p>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge&logo=appveyor)](https://opensource.org/licenses/MIT) 
-[![arXiv](https://img.shields.io/badge/arXiv-2301.02967-red?style=for-the-badge&logo=appveyor)](https://arxiv.org/abs/2301.02967) 
-[![DOI](https://img.shields.io/badge/DOI-10.1007%2Fs11467.023.1318.y-blue?style=for-the-badge&logo=appveyor)](https://link.springer.com/article/10.1007/s11467-023-1318-y)
 ## Introduction
 
 <p align="justify">
