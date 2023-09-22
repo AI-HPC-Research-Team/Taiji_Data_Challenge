@@ -48,7 +48,7 @@ MCMC posterior corner plot for the toy dataset. The MCMC posterior analysis is c
 	```
 2. Install others dependencies:
    - 	```bash
-		pip install bidict tqdm h5py requests astropy h5py xarray
+		pip install bidict tqdm h5py requests astropy h5py xarray bezier constant
 		```
    - *(Optional) Install `cupy` following instructions from [https://docs.cupy.dev/en/stable/install.html](https://docs.cupy.dev/en/stable/install.html)*
 3. Install [FastEMRIWaveforms](https://github.com/BlackHolePerturbationToolkit/FastEMRIWaveforms) and [lisa-on-gpu](https://github.com/mikekatz04/lisa-on-gpu).
